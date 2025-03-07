@@ -1,3 +1,7 @@
+@use "sass:meta";
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+@include meta.load-css("fonts.scss");
+
 @layer tailwind-base, antd;
 
 @layer tailwind-base {
@@ -19,5 +23,5 @@ body,
   min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  color: #fff;
+  background-color: #f7f7f7;
 }
