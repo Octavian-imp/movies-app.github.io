@@ -1,18 +1,25 @@
 import { gray } from "@ant-design/colors"
 import { Button, Flex, Image, Typography } from "antd"
 import { format } from "date-fns"
-import React, { CSSProperties } from "react"
+import React, { CSSProperties, RefObject, useRef } from "react"
 
-type Props = {}
+type Props = {
+  title: string
+  releaseDate: string
+  genres: string[]
+  description: string
+  posterURL: string
+}
 
 const { Title, Paragraph } = Typography
 
 const styles: Record<string, CSSProperties> = {
   body: {
     boxShadow: "0 4px 12px rgb(0 0 0 / 15%)",
-    height: "fit-content",
+    height: "auto",
     columnGap: "20px",
     width: "451px",
+    maxHeight: "279px",
   },
   title: {
     fontSize: "20px",
@@ -32,33 +39,38 @@ const styles: Record<string, CSSProperties> = {
   description: { fontSize: "14px", textAlign: "start" },
 }
 
-const MovieCard = (props: Props) => {
+const MovieCard = ({
+  description,
+  genres,
+  releaseDate,
+  title,
+  posterURL,
+}: Props) => {
   return (
     <Flex style={styles.body}>
       <Image
-        src="./assets/films/2025-01-30-mountains-1-65455.jpg"
+        src={process.env.IMAGE_URL + posterURL}
         width={183}
-        height={281}
+        height={279}
         style={{ objectFit: "cover" }}
         wrapperStyle={{ flex: "none" }}
       />
       <Flex vertical style={{ padding: "10px 20px 10px 0" }}>
-        <Typography>
-          <Title style={styles.title}>Header</Title>
-          <Paragraph style={styles.releaseDate}>
-            {format(new Date(), "MMMM dd, yyyy")}
-          </Paragraph>
-          <Flex gap={"8px"}>
-            <Button style={styles.genre}>Action</Button>
-            <Button style={styles.genre}>Action</Button>
-          </Flex>
-          <Paragraph style={styles.description}>
-            A former basketball all-star, who has lost his wife and family
-            foundation in a struggle with addiction attempts to regain his soul
-            and salvation by becoming the coach of a disparate ethnically mixed
-            high ...
-          </Paragraph>
-        </Typography>
+        <Title style={styles.title}>{title}</Title>
+        <Paragraph style={styles.releaseDate}>
+          {format(
+            Date.parse(releaseDate.length === 0 ? "0" : releaseDate),
+            "MMMM dd, yyyy"
+          )}
+        </Paragraph>
+        <Flex gap={"8px"}>
+          {genres.map((genre, index) => (
+            <Button key={index} style={styles.genre}>
+              {genre}
+            </Button>
+          ))}
+        </Flex>
+        <Paragraph style={styles.description}>{description}</Paragraph>
       </Flex>
     </Flex>
   )

@@ -58,8 +58,8 @@
     "dotenv-webpack": "^8.1.0",
     "lodash": "^4.17.21",
     "lucide": "^0.447.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "lint-staged": {
     "*.{js,ts,ts,tsx}": [
