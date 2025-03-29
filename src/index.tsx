@@ -1,5 +1,5 @@
 import "@/index.scss"
-import React from "react"
+import React, { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import App from "./App"
 
@@ -13,4 +13,8 @@ window.addEventListener("online", () => {
   alert("5 минут полет нормальный:)")
 })
 
-createRoot(document.getElementById("root")!).render(<App />)
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
