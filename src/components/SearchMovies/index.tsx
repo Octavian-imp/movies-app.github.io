@@ -1,6 +1,6 @@
 import { Alert, Spin } from "antd"
 import React, { useContext, useEffect, useState } from "react"
-import MovieApi, { MovieApiError } from "../../services/MovieApi"
+import MovieApi from "../../services/MovieApi"
 import MovieContext from "../../store/MovieProvider"
 import { MovieHttpResult } from "../../types/movie"
 import MoviesList from "../ui/MoviesList"
